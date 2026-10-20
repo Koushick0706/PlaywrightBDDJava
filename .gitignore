@@ -1,0 +1,27 @@
+# Maven build output
+/target/
+
+# Allure generated results and reports
+/allure-results/
+/allure-report/
+/allure-results-history/
+
+# Playwright traces and test artifacts
+/traces/
+/playwright-report/
+/test-results/
+
+# Local Allure CLI/cache files
+/.allure/
+
+# IDE files
+/.idea/
+*.iml
+.vscode/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
