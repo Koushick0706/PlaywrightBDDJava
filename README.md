@@ -2,10 +2,17 @@
 
 A Maven starter framework for browser tests using Playwright Java and Cucumber.
 
+[![Maven](https://img.shields.io/badge/Maven-3.8%2B-green?logo=apachemaven)](https://maven.apache.org/)
+[![Java](https://img.shields.io/badge/Java-17%2B-green?logo=openjdk)](https://openjdk.org/)
+[![JUnit](https://img.shields.io/badge/JUnit-5.14.2-green?logo=junit5)](https://junit.org/junit5/)
+[![Playwright Java](https://img.shields.io/badge/Playwright_Java-1.63.0-green?logo=playwright)](https://playwright.dev/java/)
+
 ## Prerequisites
 
 - Java 17+
 - Maven 3.8+
+- JUnit 5.14.2
+- Playwright Java 1.63.0
 
 ## Project layout
 
@@ -67,14 +74,14 @@ Run only account access scenarios with:
 mvn clean test -Dcucumber.filter.tags="@account"
 ```
 
-Allure captures the Cucumber scenarios and steps in `target/allure-results`. Each scenario includes its resolved test data as a JSON attachment (passwords are redacted) and a downloadable Playwright trace ZIP attachment. The trace ZIP is also saved under `src/test/resources/TracingFiles`. Open the scenario details in Allure and select either attachment to view or download it. View the report with:
+Allure captures the Cucumber scenarios and steps in `target/allure-results`. Each scenario includes its resolved test data as a JSON attachment (passwords are redacted) and a downloadable Playwright trace ZIP attachment. The trace ZIP is also saved under `src/test/resources/TracingFiles`. After each scenario, the teardown hook closes the browser and automatically opens the saved trace in Playwright Trace Viewer. Open the scenario details in Allure to view or download its attachments. View the report with:
 
 ```bash
 mvn allure:serve
 ```
 
-To inspect a trace in Playwright Trace Viewer, download the ZIP attachment from the Allure scenario or run:
+To reopen a trace manually, run this command from the project root (the directory containing `pom.xml`) and replace `TRACE_FILE.zip` with the trace filename:
 
 ```bash
-mvn exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="show-trace src/test/resources/TracingFiles/<trace-file>.zip"
+mvn exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="show-trace src/test/resources/TracingFiles/TRACE_FILE.zip"
 ```
