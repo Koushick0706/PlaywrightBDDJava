@@ -17,9 +17,10 @@
         <junit-platform-suite.version>1.14.2</junit-platform-suite.version>
         <junit-jupiter.version>5.14.2</junit-jupiter.version>
         <jackson.version>2.22.2</jackson.version>
-        <fillo.version>1.24</fillo.version>
         <allure.version>3.0.0</allure.version>
         <allure.maven.version>3.1.0</allure.maven.version>
+        <csv.version>1.10.0</csv.version>
+        <cucumber.filter.tags>@tools-shop</cucumber.filter.tags>
     </properties>
 
     <dependencyManagement>
@@ -84,15 +85,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.codoid.products</groupId>
-            <artifactId>fillo</artifactId>
-            <version>${fillo.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber7-jvm</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>${csv.version}</version>
         </dependency>
     </dependencies>
 
@@ -115,6 +116,9 @@
                         <include>**/*Test.java</include>
                         <include>**/*Runner.java</include>
                     </includes>
+                    <systemPropertyVariables>
+                        <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
             <plugin>
@@ -133,8 +137,3 @@
         </plugins>
     </build>
 </project>
-
-
-
-
-

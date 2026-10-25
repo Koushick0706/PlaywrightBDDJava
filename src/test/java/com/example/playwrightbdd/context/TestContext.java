@@ -1,11 +1,11 @@
 package com.example.playwrightbdd.context;
 
+import com.example.playwrightbdd.config.TestConfig;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
-
-import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TestContext {
@@ -14,7 +14,16 @@ public class TestContext {
     private BrowserContext browserContext;
     private Page page;
     private String testDataKey;
-    private Map<String, String> testData = Map.of();
+    private String baseUrl = TestConfig.baseUrl();
+    private static List<Map<String, String>> testData = List.of();
+
+    public String baseUrl() {
+        return baseUrl;
+    }
+
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = TestConfig.resolveBaseUrl(baseUrl);
+    }
 
     public Playwright playwright() {
         return playwright;
@@ -48,16 +57,16 @@ public class TestContext {
         this.page = page;
     }
 
-    public void setTestData(String scenarioKey, Map<String, String> values) {
+    public void setTestData(String scenarioKey, List<Map<String, String>> values) {
         this.testDataKey = scenarioKey;
-        this.testData = Map.copyOf(new LinkedHashMap<>(values));
+        this.testData = List.copyOf(values);
     }
 
     public String testDataKey() {
         return testDataKey;
     }
 
-    public Map<String, String> testData() {
+    public static List<Map<String, String>> testData() {
         return testData;
     }
 }

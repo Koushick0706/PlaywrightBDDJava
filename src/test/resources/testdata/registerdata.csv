@@ -1,0 +1,4 @@
+TestcaseNo,Name,Email,Password,Interests,Gender,State,Hobbies
+TC_001,Dinesh Kumar,dineshkumar@testinghr235.com,Password123,"Rag_chint,API1234,automation,rest assured",Male,Tamil Nadu,"Swimming,Singing"
+TC_002,Subbu Sharma,Subbu@testinghr243.com,Password123,"Rag_chint,API1234,automation,rest assured",Female,Tamil Nadu,"Swimming,Singing"
+TC_003,Arun Kumar,Arun@testinghr243.com,Password123,"Rag_chint,API1234,automation,rest assured",Male,Tamil Nadu,"Swimming,Singing"

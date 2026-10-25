@@ -1,0 +1,2 @@
+TestcaseNo,FirstName,LastName,DateOfBirth,Country,PostalCode,HouseNumber,Street,City,State,PhoneNumber,Email,Password
+TC_001,Dinesh,Kumar,1998-01-01,India,600001,123,MG Road,Chennai,Tamil Nadu,9876543210,dk96@gmail.com,testinG@1996
